@@ -100,10 +100,10 @@ class Workflow(object):
     def submit(self):
         """Submit all the jobs in the workflow to Biowulf"""
         for job in self.jobs:
-            print(("submitting job %s" % str(job)))
+            print("submitting job %s" % str(job))
             self._recursiveSubmit(job)
         
-        print((self.submitLog))
+        print(self.submitLog)
             
 if __name__=="__main__":
     a = Job(command='hostname',name='a',nodes='1:c2',params='')

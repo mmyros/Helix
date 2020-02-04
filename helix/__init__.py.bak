@@ -29,12 +29,12 @@ class Swarm(object):
         #Try to make the swarm and job file directories. If they already exist, move on
         try:
                 os.makedirs(self.job_directory)
-        except OSError as e:
+        except OSError, e:
                 if e.errno != errno.EEXIST:
                             raise
         try:
                 os.makedirs(self.swarm_directory)
-        except OSError as e:
+        except OSError, e:
                 if e.errno != errno.EEXIST:
                             raise
 
@@ -88,7 +88,7 @@ class Swarm(object):
         """Submits all added jobs to Biowulf"""
         self.swarm_file.close()
         from os import system
-        print(("Submitting analyses with swarm file "+self.swarm_file_name))
+        print("Submitting analyses with swarm file "+self.swarm_file_name)
         system('swarm -f '+self.swarm_file_name+' -g '+str(self.memory_requirement)+' -m a')
         open(self.swarm_directory+'max_swarm_file.txt', 'w').write(self.new_swarm)
 
